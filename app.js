@@ -5,6 +5,15 @@ let questionData = {
     type: ""
 }
 
+const escapeHTML = str => str.replace(/[&<>'"]/g,
+    tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+    }[tag]));
+
 let addOnce = 0
 
 let score = 0
@@ -48,7 +57,8 @@ function unHideElement(element) {
 }
 
 function checkAnswer(element) {
-    if (element.innerHTML === questionData[0].correct_answer) {
+    console.log(decodeURI(questionData[0].correct_answer))
+    if (element.innerHTML === decodeURI(questionData[0].correct_answer)) {
         showResult(true)
     } else {
         showResult(false)
