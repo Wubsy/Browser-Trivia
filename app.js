@@ -7,8 +7,8 @@ let questionData = {
 
 let addOnce = 0
 
-let score
-if (!!localStorage.getItem("gameScore")) {
+let score = 0
+if (localStorage.getItem("gameScore") === null || localStorage.getItem("gameScore") === "NaN") {
     localStorage.setItem("gameScore", "0")
     score = 0
 } else {
@@ -125,7 +125,6 @@ function shuffleAnswers(array) {
 
 function addScore() {
     score += 1
-    console.log(score)
     setScoreString()
     return
 }
