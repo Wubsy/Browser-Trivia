@@ -102,7 +102,6 @@ async function newQuestion() {
     }
     console.log("Page updated.")
     addListeners()
-    return
 }
 
 // https://bost.ocks.org/mike/shuffle/
