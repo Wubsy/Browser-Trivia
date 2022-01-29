@@ -2,6 +2,7 @@ let questionData = {
     correct_answer: "",
     incorrect_answers: [],
     question: "",
+    type: ""
 }
 
 let multipleChoiceButtons = Array.from(document.getElementsByClassName('multiple'))
@@ -31,11 +32,19 @@ window.onload = async () => {
 }
 
 function addListeners() {
-    Array.from(document.getElementsByClassName('multiple')).forEach(function (element) {
-        element.addEventListener('click', function () {
-            checkAnswer(element)
+    if (questionData[0].type === "multiple") {
+        Array.from(document.getElementsByClassName('multiple')).forEach(function (element) {
+            element.addEventListener('click', function () {
+                checkAnswer(element)
+            })
         })
-    })
+    } else {
+        Array.from(document.getElementsByClassName('tf')).forEach(function (element) {
+            element.addEventListener('click', function () {
+                checkTrueFalseAnswer(element)
+            })
+        })
+    }
 }
 
 function hideElement(element) {
@@ -50,8 +59,16 @@ function checkAnswer(element) {
     }
 }
 
+function checkTrueFalseAnswer(element) {
+    if (element.innerHTML === questionData[0].correct_answer ) {
+        console.log("Correct")
+    } else {
+        console.log("Incorrect")
+    }
+}
+
 function hideElementByClassName(className) {
-    Array.from(document.getElementsByClassName(className)).forEach(function(element) {
+    Array.from(document.getElementsByClassName(className)).forEach(function (element) {
         hideElement(element)
     })
 }

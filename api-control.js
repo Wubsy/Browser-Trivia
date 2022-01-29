@@ -1,6 +1,6 @@
 async function getAPIData(prevToken) {
     let tokenCurrent
-    let numOfQuestions = 5
+    let numOfQuestions = 1
     let questions = []
     if(!!prevToken) {
         let testOld = await fetch('https://opentdb.com/api.php?amount=1&token='+prevToken)
@@ -22,7 +22,7 @@ async function getAPIData(prevToken) {
 
     let {response_code, results} = questionsResp
 
-    console.log(results[0].question)
+    return results
 
 
 
