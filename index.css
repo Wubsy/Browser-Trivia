@@ -1,0 +1,80 @@
+html, body {
+    color: #f5f5f5;
+    height: 100%;
+    margin: 1em;
+}
+
+.answer-grid {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.answer-grid > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#question-box {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 150%;
+}
+
+button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.2em solid #000c78;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+button:hover{
+    color: #f5f5f5;
+    background-color: #424ea8;
+}
+
+#next-question {
+    background-color: lightgreen;
+}
+
+#next-question:hover {
+    color: black;
+    background-color: #68ad68;
+}
+
+html {
+    background-color: #424ea8;
+}
+
+#guess-result {
+    text-align: center;
+    font-size: 150%;
+}
+
+hr{
+    height: 0;
+    background-color: #424ea8;
+    border: none;
+}
+
+#score-box {
+    font-size: 200%;
+    text-align: right;
+}
+
+#scoreData {
+    text-align: match-parent;
+    margin-right: 1em;
+}

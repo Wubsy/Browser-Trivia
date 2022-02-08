@@ -1,13 +1,11 @@
 async function getAPIData(prevToken) {
     let tokenCurrent
     let numOfQuestions = 1
-    let questions = []
-    if(!!prevToken) {
+    //let questions = []
+    if(prevToken !== "") {
         let testOld = await fetch('https://opentdb.com/api.php?amount=1&token='+prevToken)
         let testOldResp = await testOld.json()
-        let {oldToken_response_code} = testOldResp
-
-        if (oldToken_response_code === 0) {
+        if (testOldResp.response_code === 0) {
             tokenCurrent = prevToken
         } else {
             tokenCurrent = await getNewToken()
@@ -17,46 +15,12 @@ async function getAPIData(prevToken) {
     }
 
     //Request questions and answers https://opentdb.com/api.php?amount=10&token=YOURTOKENHERE
-    let request = await fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}&token=${tokenCurrent}`)
+    let request = await fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}&token=${tokenCurrent}&type=multiple`)
     let questionsResp = await request.json()
 
     let {response_code, results} = questionsResp
 
     return results
-
-
-
-
-
-
-
-    //Topics
-    /*
-        General Knowledge
-        Entertainment: Books
-        Entertainment: Film
-        Entertainment: Music
-        Entertainment: Musicals & Theatres
-        Entertainment: Television
-        Entertainment: Video Games
-        Entertainment: Board Games
-        Entertainment: Comics
-        Entertainment: Japanese Anime & Manga
-        Entertainment: Cartoon & Animations
-        Science & Nature
-        Science: Computers
-        Science: Mathematics
-        Science: Gadgets
-        Mythology
-        Sports
-        Geography
-        History
-        Politics
-        Art
-        Celebrities
-        Animals
-        Vehicles
-     */
 }
 
 async function getNewToken() {
@@ -73,4 +37,30 @@ async function getNewToken() {
     return token
 }
 
-
+//Topics
+/*
+    General Knowledge
+    Entertainment: Books
+    Entertainment: Film
+    Entertainment: Music
+    Entertainment: Musicals & Theatres
+    Entertainment: Television
+    Entertainment: Video Games
+    Entertainment: Board Games
+    Entertainment: Comics
+    Entertainment: Japanese Anime & Manga
+    Entertainment: Cartoon & Animations
+    Science & Nature
+    Science: Computers
+    Science: Mathematics
+    Science: Gadgets
+    Mythology
+    Sports
+    Geography
+    History
+    Politics
+    Art
+    Celebrities
+    Animals
+    Vehicles
+ */

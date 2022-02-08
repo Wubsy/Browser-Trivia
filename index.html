@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Trivia Time!</title>
+    <link rel="stylesheet" href="index.css">
     <script src="app.js"></script>
     <script src="api-control.js"></script>
 </head>
 <body>
     <main>
         <h1>Trivia</h1>
+        <div id="score-box">Score:
+            <br>
+            <div id="scoreData">0</div>
+        </div>
         <div id="question-box"></div>
-        <button id="a" class="multiple">A</button>
-        <button id="b" class="multiple">B</button>
-        <button id="c" class="multiple">C</button>
-        <button id="d" class="multiple">D</button>
-        <button id="true" class="tf">True</button>
-        <button id="false" class="tf">False</button>
         <br>
-        <button id="next-question" onclick="newQuestion()">Next question</button>
+        <div class="answer-grid">
+            <div><button id="a" class="multiple">A</button></div>
+            <div><button id="b" class="multiple">B</button></div>
+            <div><button id="c" class="multiple">C</button></div>
+            <div><button id="d" class="multiple">D</button></div>
+            <!--
+            <div class="tf"><button id="true" class="tf">True</button></div>
+            <div class="tf"><button id="false" class="tf">False</button></div>
+            -->
+        </div>
+        <br>
+        <button id="next-question">Next question</button>
         <br>
         <hr>
         <div id="guess-result"></div>
