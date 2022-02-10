@@ -15,6 +15,7 @@ function fixHtmlChars(text) {
     return text
         .replaceAll("&iacute;", "í")
         .replaceAll("&aacute;", "á")
+        .replaceAll("&ntilde;", "ñ")
         .replaceAll("&deg;", "°")
         .replaceAll("&amp;", "&")
         .replaceAll("&gt;", ">")
@@ -156,12 +157,12 @@ async function showResult(check) {
     if (check) {
         document.getElementById('guess-result').innerHTML = "Correct!"
         if (!guessed) {addScore()}
-        await checkWin()
     } else {
         document.getElementById('guess-result').innerHTML = "Incorrect..."
-        await checkWin()
+
     }
     document.getElementById('scoreData').innerHTML = score
+    await checkWin()
 }
 
 function setScoreString() {
