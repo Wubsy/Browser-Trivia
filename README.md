@@ -45,7 +45,7 @@ There are 10 questions per game and you need a score of 6 or greater in order to
 ## TODO
 - [ ] Add landing page.
 - [ ] Allow for category selection.
-- [ ] Show result of final question.
+- [x] Show result of final question.
 - [ ] Add more to TODO.
 
 
