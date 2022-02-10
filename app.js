@@ -46,7 +46,7 @@ function addListeners() {
     })
     document.getElementById('next-question').addEventListener('click',  async function () {
         if(guessed) {
-            await newQuestion()
+            if (questionNum !== 10) {await newQuestion()}
         } else {
             document.getElementById('guess-result').innerHTML = "You have to answer before going to the next question."
         }
@@ -162,21 +162,12 @@ async function showResult(check) {
     if (check) {
         document.getElementById('guess-result').innerHTML = "Correct!"
         if (!guessed) {addScore()}
+        await checkWin()
     } else {
         document.getElementById('guess-result').innerHTML = "Incorrect..."
+        await checkWin()
     }
     document.getElementById('scoreData').innerHTML = score
-
-    if (questionNum === 10) {
-        if (score >= 6) {
-            document.getElementById('guess-result').innerHTML = `You Win!   Final score: ${score}/10`
-            await win()
-        } else {
-            document.getElementById('guess-result').innerHTML = `You lost...   Final score: ${score}/10`
-            await new Promise(r => setTimeout(r, 5000))
-            window.location.reload(); //Reload the page
-        }
-    }
 }
 
 function setScoreString() {
@@ -189,7 +180,6 @@ function setScoreData(newGame) {
         score = 0
         return
     }
-
     if (localStorage.getItem("gameScore") === null || localStorage.getItem("gameScore") === "NaN") {
         localStorage.setItem("gameScore", "0")
         score = 0
@@ -203,4 +193,18 @@ async function win() {
     await new Promise(r => setTimeout(r, 10000)) //Wait 10 seconds
     document.body.style.backgroundImage = "" //Remove confetti
     window.location.reload(); //Reload the page
+}
+
+async function checkWin() {
+    if (questionNum === 10) {
+        let result = document.getElementById('guess-result').innerHTML
+        if (score >= 6) {
+            document.getElementById('guess-result').innerHTML = `${result} You Win!   Final score: ${score}/10`
+            await win()
+        } else {
+            document.getElementById('guess-result').innerHTML = `${result} You lost...   Final score: ${score}/10`
+            await new Promise(r => setTimeout(r, 5000))
+            window.location.reload(); //Reload the page
+        }
+    }
 }
