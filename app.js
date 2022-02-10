@@ -44,7 +44,9 @@ function addListeners() {
     })
     document.getElementById('next-question').addEventListener('click',  async function () {
         if(guessed) {
-            if (questionNum !== 10) {await newQuestion()}
+            if (questionNum !== 10) {
+                await newQuestion()
+            }
         } else {
             document.getElementById('guess-result').innerHTML = "You have to answer before going to the next question."
         }
@@ -57,17 +59,13 @@ function onlyVisibleButtons(show, hide) {
 }
 
 function hideElement(element) {
-    if (element.parentElement === "flex-box") {
-        element.parentElement.setAttribute("hidden", "true")
-    }
     element.setAttribute("hidden", "true")
+    element.setAttribute("display", "none")
 }
 
 function unHideElement(element) {
-    if (element.parentElement === "flex-box") {
-        element.parentElement.removeAttribute("hidden")
-    }
     element.removeAttribute("hidden")
+    element.setAttribute("display", "block")
 }*/
 
 function checkAnswer(element) {
@@ -129,7 +127,6 @@ async function newQuestion() {
         //onlyVisibleButtons('tf', 'multiple')
     }
     console.log(fixHtmlChars(questionData[0].correct_answer))
-    await addListeners()
 }
 
 function shuffleAnswers(array) {
