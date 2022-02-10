@@ -23,8 +23,6 @@ function fixHtmlChars(text) {
         .replaceAll("&#039;", "\'");
 }
 
-let addOnce = 0
-
 let score = 0
 
 // This needs to be done on start game as well
@@ -34,10 +32,10 @@ setScoreData()
 window.onload = async () => {
     setScoreData(true)
     await newQuestion()
+    addListeners()
 }
 
 function addListeners() {
-    if (addOnce >= 1) { return }
     Array.from(document.getElementsByClassName('multiple')).forEach(function (element) {
         element.addEventListener('click', function () {
             checkAnswer(element)
@@ -51,7 +49,6 @@ function addListeners() {
             document.getElementById('guess-result').innerHTML = "You have to answer before going to the next question."
         }
     })
-    addOnce++
 }
 /*
 function onlyVisibleButtons(show, hide) {

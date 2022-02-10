@@ -26,7 +26,7 @@ async function getAPIData(prevToken) {
 async function getNewToken() {
     //Request API key (token) https://opentdb.com/api_token.php?command=request
     //Only get once every 6 hours
-    //Alternatively, check to see if previous token returns a response code of 0 (good) or 3 (invalid){4 is empty}
+    //Alternatively, check to see if previous token returns a response code of 0 (good) or 3 (invalid) 4 is empty
     let apiToken = await fetch('https://opentdb.com/api_token.php?command=request')
     let tokenResp = await apiToken.json()
 
